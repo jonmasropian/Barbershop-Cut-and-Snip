@@ -4,7 +4,7 @@ const yearEl = document.getElementById("year");
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 
-const ctaBtn = document.getElementById("ctaBtn");
+// const ctaBtn = document.getElementById("ctaBtn");
 const callBtn = document.getElementById("callBtn");
 
 const phoneLink = document.getElementById("phoneLink");
