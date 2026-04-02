@@ -242,13 +242,14 @@ body {
 /* ---- Features Grid ---- */
 .feature-grid {
     display: flex;
+    flex-wrap: wrap;
     grid-template-columns: 0;
-    width: 100%;
+    width: max-content;
     will-change: transform;
     transition: transform 0.2s ease-out;
     gap: 24px;
 }
-
+ 
 .features .container {
     max-width: 100%;
     padding-left: 0;
@@ -285,14 +286,14 @@ body {
 .feature-text {
     color: rgba(31, 31, 31, 0.78);
 }
-
+ 
 .service-actions {
     margin-top: 14px;
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
-
+ 
 .service-details-btn {
     background-color: var(--color-bg-dark);
     color: var(--color-text-light);
@@ -303,18 +304,18 @@ body {
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
-
+ 
 .service-details-btn:hover {
     transform: translateY(-2px) scale(1.03);
     box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16);
     opacity: 0.96;
 }
-
+ 
 .service-details-btn:active {
     transform: translateY(0);
 }
-
-/* Service Modal */
+ 
+/* ===== Service Modal ===== */
 .service-modal {
     position: fixed;
     inset: 0;
@@ -324,17 +325,17 @@ body {
     padding: 20px;
     z-index: 999;
 }
-
+ 
 .service-modal.is-open {
     display: flex;
 }
-
+ 
 .service-modal-overlay {
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.58);
 }
-
+ 
 .service-modal-content {
     position: relative;
     width: 100%;
@@ -346,10 +347,10 @@ body {
     border-radius: 18px;
     padding: 28px 24px 24px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
-    border: 2px solid rgba(48, 45, 40, 0.15);
+    border: 2px solid rgba(58, 45, 40, 0.15);
     z-index: 1;
 }
-
+ 
 .service-modal-close {
     position: absolute;
     top: 12px;
@@ -363,24 +364,24 @@ body {
     padding: 4px 8px;
     border-radius: 8px;
 }
-
+ 
 .service-modal-close:hover {
     background-color: rgba(58, 45, 40, 0.08);
 }
-
+ 
 .service-modal-price {
     margin: 8px 0 16px;
     font-size: 18px;
     font-weight: 700;
     color: var(--color-accent);
 }
-
+ 
 .service-modal-list {
     padding-left: 20px;
     display: grid;
     gap: 10px;
 }
-
+ 
 .service-modal-list li {
     line-height: 1.5;
 }

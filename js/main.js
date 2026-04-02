@@ -4,7 +4,7 @@
 // =========================
  
 // ----- DOM Elements -----
-const yearE1 = document.getElementById("year");
+const yearEl = document.getElementById("year");
  
 const nav = document.getElementById("nav");
 const menuBtn = document.getElementById("menuBtn");
@@ -22,9 +22,8 @@ const emailLink = document.getElementById("emailLink");
  
 const heading = document.getElementById("heroHeading");
 const heroSubtext = document.getElementById("heroSubtext");
-// const ctaText = document.getElementById("ctaText");
-
-// modal elements
+ 
+// ----- Modal Elements -----
 const serviceModal = document.getElementById("serviceModal");
 const serviceModalOverlay = document.getElementById("serviceModalOverlay");
 const serviceModalClose = document.getElementById("serviceModalClose");
@@ -41,7 +40,7 @@ const shopInfo = {
     email: "hello@vintagebarbershop.com"
 };
  
-// ----- Navigation Data (Array of Objects) -----
+// ----- Navigation Data -----
 const navLinks = [
     { label: "Home", href: "#hero" },
     { label: "Services", href: "#features" },
@@ -49,94 +48,104 @@ const navLinks = [
     { label: "Contact", href: "#footer" }
 ];
  
-// ----- Services Data (Array of Objects) -----
+// ----- Services Data -----
 const services = [
-    {   id: 1,
+    {
+        id: 1,
         title: "Classic Haircut",
         image: "assets/images/feature-1.jpg",
         alt: "Classic haircut",
         description: "Timeless cuts with modern precision—tailored to your style.",
         price: 25,
         popular: true,
-        details: ["Consultation with your barber before the cut begins.", 
+        details: [
+            "Consultation with your barber before the cut begins.",
             "Hair sectioning and shape-up based on your preferred style.",
             "Professional clippers, trimmers, and shears used for precision.",
             "Neckline cleanup and finishing touches included.",
             "Light styling product applied for a clean final look."
         ]
     },
-    {   id: 2,
+    {
+        id: 2,
         title: "Beard Trim",
         image: "assets/images/feature-4.jpeg",
         alt: "Beard trim",
         description: "Shape, line-up, and refine your beard for a clean finish.",
         price: 15,
         popular: false,
-        details: ["Beard assessment and shaping based on face structure.",
+        details: [
+            "Beard assessment and shaping based on face structure.",
             "Line-up around cheeks, jawline, and neckline.",
             "Trimmers and detail tools used for crisp edges.",
             "Conditioning beard product may be applied for softness.",
             "Final symmetry check for a polished finish."
         ]
     },
-    {   id: 3,
+    {
+        id: 3,
         title: "Straight Razor Shave",
         image: "assets/images/feature-3.jpg",
         alt: "Straight razor shave",
         description: "Hot towel, smooth shave, and classic barbershop experience.",
         price: 30,
         popular: true,
-        details: ["Hot towel prep to soften facial hair and open pores.",
+        details: [
+            "Hot towel prep to soften facial hair and open pores.",
             "Premium shaving cream or lather applied to protect the skin.",
             "Straight razor shave performed with careful detailing.",
             "Second hot towel may be used for comfort and cleanup.",
             "Aftershave or soothing skin product applied after service."
         ]
     },
-    {   id: 4,
+    {
+        id: 4,
         title: "Fade & Style",
         image: "assets/images/feature-2.jpg",
         alt: "Fade haircut",
         description: "A clean fade with finishing detail for a sharp, modern look.",
         price: 35,
         popular: false,
-        details: ["Style consultation before clipper work begins.",
+        details: [
+            "Style consultation before clipper work begins.",
             "Fade blended to your preferred level and finish.",
             "Detailing around temples, neckline, and beard area if needed.",
             "Scissors and clipper-over-comb may be used for texture.",
             "Styling product added to complete the final look."
         ]
     },
-    {   id: 5,
-        title: "Classic Haircut",
+    {
+        id: 5,
+        title: "Kids Cut",
         image: "assets/images/feature-1.jpg",
-        alt: "Classic haircut",
-        description: "Timeless cuts with modern precision—tailored to your style.",
-        price: 25,
-        popular: true,
-        details: ["Simple consultation with child and parent if needed.",
+        alt: "Kids haircut",
+        description: "Clean, comfortable haircut service for younger clients.",
+        price: 20,
+        popular: false,
+        details: [
+            "Simple consultation with child and parent if needed.",
             "Age-appropriate haircut with comfort in mind.",
             "Careful clipper and scissor work for a clean finish.",
             "Light cleanup around the neckline and ears.",
             "Styled neatly before leaving the chair."
         ]
     },
-    {   id: 6,
-        title: "Beard Trim",
-        image: "assets/images/feature-4.jpeg",
-        alt: "Beard trim",
-        description: "Shape, line-up, and refine your beard for a clean finish.",
-        price: 15,
-        popular: false,
-        details: ["Scalp prep with warm towel treatment.",
+    {
+        id: 6,
+        title: "Head Shave",
+        image: "assets/images/feature-3.jpg",
+        alt: "Head shave",
+        description: "Smooth head shave with classic barbershop treatment.",
+        price: 28,
+        popular: true,
+        details: [
+            "Scalp prep with warm towel treatment.",
             "Protective shave product applied before razor work.",
             "Close shave performed for a smooth finish.",
             "Scalp cleaned and checked for even consistency.",
             "Moisturizing scalp product applied after the shave."
         ]
     }
- 
-       
 ];
  
 // ----- Hours Data -----
@@ -150,28 +159,19 @@ const businessHours = [
     { day: "Sunday", open: 0, close: 0 }
 ];
  
-// ----- Helpers / Functions -----
- 
-// Update footer year automatically
+// ----- Helpers -----
 const setCurrentYear = () => {
-    if (!yearE1) return;
-    yearE1.textContent = new Date().getFullYear();
+    if (!yearEl) return;
+    yearEl.textContent = new Date().getFullYear();
 };
  
-// Convert 24-hour number into readable time
 const formatHour = (hour) => {
     if (hour === 0) return "Closed";
- 
     if (hour === 12) return "12pm";
- 
-    if (hour > 12) {
-        return `${hour - 12}pm`;
-    }
- 
+    if (hour > 12) return `${hour - 12}pm`;
     return `${hour}am`;
 };
  
-// Toggle mobile menu open/close
 let isMenuOpen = false;
  
 const toggleMobileMenu = () => {
@@ -186,14 +186,14 @@ const toggleMobileMenu = () => {
     }
 };
  
-// Close mobile menu
+// Close mobile menu when a link is clicked or when clicking outside the menu
 const closeMobileMenu = () => {
     if (!mobileMenu) return;
     mobileMenu.classList.remove("is-open");
     isMenuOpen = false;
 };
  
-// Reusable function with parameters
+// Resusable functions to update text content in the hero section
 const updateHeadingText = (newText) => {
     if (!heading) return;
     heading.textContent = newText;
@@ -203,81 +203,83 @@ const updateSubtext = (newText) => {
     if (!heroSubtext) return;
     heroSubtext.textContent = newText;
 };
-
-// modal logic
+ 
+// ----- Modal Logic -----
 const openServiceModal = (serviceId) => {
     if (!serviceModal || !serviceModalTitle || !serviceModalPrice || !serviceModalList) return;
-
+ 
     const selectedService = services.find((service) => service.id === Number(serviceId));
     if (!selectedService) return;
-    
+ 
     serviceModalTitle.textContent = selectedService.title;
     serviceModalPrice.textContent = `$${selectedService.price}`;
     serviceModalList.innerHTML = selectedService.details
-    .map((detail) => `<li>${detail}</li>`)
-    .join("");
-    
+        .map((detail) => `<li>${detail}</li>`)
+        .join("");
+ 
     serviceModal.classList.add("is-open");
     serviceModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
 };
-
+ 
 const closeServiceModal = () => {
     if (!serviceModal) return;
-
+ 
     serviceModal.classList.remove("is-open");
     serviceModal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-}
+};
  
 // ----- Render Functions -----
- 
 const renderNavigation = () => {
     if (nav) {
         nav.innerHTML = navLinks
-        .map((link) => `<a href="${link.href}"
-        class="nav-link">${link.label}</a>`)
-        .join("");
+            .map((link) => `<a href="${link.href}" class="nav-link">${link.label}</a>`)
+            .join("");
     }
  
     if (mobileMenu) {
         mobileMenu.innerHTML = navLinks
-        .map((link) => `<a href="${link.href}"
-        class="mobile-nav-link">${link.label}</a>`)
-        .join("");
+            .map((link) => `<a href="${link.href}" class="mobile-link">${link.label}</a>`)
+            .join("");
     }
 };
  
 const renderServices = () => {
     if (!featureGrid) return;
  
-    const servicesHTML = services.map((service) => {
-        const badgeHTML = service.popular
-        ? `<p
-        class="service-badge">Popular Choice</p>`
-        : `<p class="service-badge alt-badge">Barber Favorite</p>`;
-        
-        return `
-        <article class="feature-card">
-        <img
-        src="${service.image}"
-        alt="${service.alt}"
-        class="feature-img"
-        />
-        <h3 class="feature-title">${service.title}</h3>
-        <p class="feature-text">${service.description}</p>
-        ${badgeHTML}
-        <p>$${service.price}</p>
-        
-        <div class="service-action">
-        <button class="service-deatails-btn" type="button" data-service-id="${service.id}">
-        View Details
-        </button>
-        </div>
-        </article>
-        `;
-    })
-    .join("");
+    const servicesHTML = services
+        .map((service) => {
+            const badgeHTML = service.popular
+                ? `<p class="service-badge">Popular Choice</p>`
+                : `<p class="service-badge alt-badge">Barber Favorite</p>`;
+ 
+            return `
+                <article class="feature-card">
+                    <img
+                        src="${service.image}"
+                        alt="${service.alt}"
+                        class="feature-img"
+                    />
+                    <h3 class="feature-title">${service.title}</h3>
+                    <p class="feature-text">${service.description}</p>
+                    ${badgeHTML}
+                    <p class="service-price">$${service.price}</p>
+ 
+                    <div class="service-actions">
+                        <button
+                            class="service-details-btn"
+                            type="button"
+                            data-service-id="${service.id}"
+                        >
+                            View Details
+                        </button>
+                    </div>
+                </article>
+            `;
+        })
+        .join("");
+ 
     featureGrid.innerHTML = servicesHTML;
 };
  
@@ -285,14 +287,14 @@ const renderHours = () => {
     if (!hoursList) return;
  
     hoursList.innerHTML = businessHours
-    .map((item) => {
-        if (item.open === 0 && item.close === 0) {
-            return `<li>${item.day}: Closed,/li>`;
-        }
-
-        return `<li>${item.day}: ${formatHour(item.open)} -- ${formatHour(item.close)}</li>`;
-    })
-    .join("");
+        .map((item) => {
+            if (item.open === 0 && item.close === 0) {
+                return `<li>${item.day}: Closed</li>`;
+            }
+            return `<li>${item.day}: ${formatHour(item.open)} –
+            ${formatHour(item.close)}</li>`;
+        })
+        .join("");
 };
  
 const renderContactInfo = () => {
@@ -315,12 +317,11 @@ const renderContactInfo = () => {
 // ----- Open / Closed Logic -----
 const checkIfOpen = () => {
     const now = new Date();
-    const currentDay = now.getDay(); // Sunday = 0
+    const currentDay = now.getDay();
     const currentHour = now.getHours();
  
     let schedule;
  
-    // convert JS day number to our array index
     if (currentDay === 0) {
         schedule = businessHours[6];
     } else {
@@ -339,39 +340,12 @@ const checkIfOpen = () => {
     }
 };
  
-// ----- Event Listeners -----
- 
-if (menuBtn) {
-    menuBtn.addEventListener("click", () => {
-        toggleMobileMenu();
-    });
-}
- 
-if (mobileMenu) {
-    mobileMenu.addEventListener("click", (event) => {
-        if (event.target.tagName === "A") {
-            closeMobileMenu();
-        }
-    });
-}
- 
-if (ctaBtn) {
-    ctaBtn.addEventListener("click", () => {
-        const bookingSection = document.getElementById("cta");
- 
-        if (bookingSection) {
-            bookingSection.scrollIntoView({ behavior: "smooth" });
-        }
- 
-        updateHeadingText("Choose your date and time below.");
-    });
-}
- 
+// ----- Scroll Shift Cards -----
 const setupScrollShiftCards = () => {
     if (!featureGrid) return;
  
     let lastScrollY = window.scrollY;
-    let currentX = -1000;
+    let currentX = 0;
     let ticking = false;
  
     const getVisibleWidth = () => {
@@ -392,7 +366,7 @@ const setupScrollShiftCards = () => {
             return;
         }
  
-        currentX -= scrollDelta * 1;
+        currentX -= scrollDelta * 0.5;
  
         const maxShift = getMaxShift();
  
@@ -422,12 +396,66 @@ const setupScrollShiftCards = () => {
     });
 };
  
+// ----- Event Listeners -----
+if (menuBtn) {
+    menuBtn.addEventListener("click", toggleMobileMenu);
+}
+ 
+if (mobileMenu) {
+    mobileMenu.addEventListener("click", (event) => {
+        if (event.target.tagName === "A") {
+            closeMobileMenu();
+        }
+    });
+}
+ 
+if (ctaBtn) {
+    ctaBtn.addEventListener("click", () => {
+        const bookingSection = document.getElementById("cta");
+ 
+        if (bookingSection) {
+            bookingSection.scrollIntoView({ behavior: "smooth" });
+        }
+ 
+        updateHeadingText("Choose your date and time below.");
+    });
+}
+ 
+if (callBtn) {
+    callBtn.addEventListener("click", () => {
+        window.location.href = `tel:${shopInfo.phoneRaw}`;
+    });
+}
+ 
+if (featureGrid) {
+    featureGrid.addEventListener("click", (event) => {
+        const clickedButton = event.target.closest(".service-details-btn");
+        if (!clickedButton) return;
+ 
+        const serviceId = clickedButton.dataset.serviceId;
+        openServiceModal(serviceId);
+    });
+}
+ 
+if (serviceModalClose) {
+    serviceModalClose.addEventListener("click", closeServiceModal);
+}
+ 
+if (serviceModalOverlay) {
+    serviceModalOverlay.addEventListener("click", closeServiceModal);
+}
+ 
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        closeServiceModal();
+    }
+});
+ 
 // ----- App Start -----
 setCurrentYear();
 renderNavigation();
-setupScrollShiftCards();
 renderServices();
+setupScrollShiftCards();
 renderHours();
 renderContactInfo();
 checkIfOpen();
- 
