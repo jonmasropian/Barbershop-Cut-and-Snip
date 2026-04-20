@@ -25,11 +25,33 @@ const heroSubtext = document.getElementById("heroSubtext");
  
 // ----- Modal Elements -----
 const serviceModal = document.getElementById("serviceModal");
+// const = create a box
+// serviceModal = name of the box, it is the box
+// value on the right side = it goes in the box, value being affected
+// Why is it called serviceModal? it is the name of the box being created, it is made up but lets devs know what it is and what it represents.
+// did Javascript automatically create this? no, we create it as devs
+// = operator, assign operator
+// what is document? it is the entire webpage, gives us access to that page and elements, call them pages
+// . = drawing attention from an object, objects are attributes and properties
+// getElementById = pulling one specific element, searching for the page and find the element with that id
+// what are the () and what is it for = its a function and () are used to call it, run this method now, executes
+// Why is serviceModal inside the function? = to get that id, its looking for a string of text
+// why not without ""? its a string of text to look for, its not a variable because it doesnt exist
+// ;? ends the line of code
+
+// grab a part of the HTML page, modal is an element popping out to show a description if clicked on or mouse rolling over it, can be represented as a mini system within the main system, grouping parts together to make it easier to manage and understand, structuring objects and functions are key to building a maintainable codebase, helpers are utility classes or functions that perform common tasks and the way we want things to function.
+
+// What is const? constant, constantly going to be this way, continuous
 const serviceModalOverlay = document.getElementById("serviceModalOverlay");
+// const? (the box thats constant), serviceModalOverlay? (the name of the box), = (assigning operator), document (getting the entire page/webpage), . (drawing attention from an object), getElementById (looking for one element by their id), () (is the function for getting the id), "" (looking for the string of text serviceModalOverlay), ; (ends the line of code)
 const serviceModalClose = document.getElementById("serviceModalClose");
+// const? (the box thats constant), serviceModalClose? (the name of the box), = (assigning operator), document (getting the entire page/webpage), . (drawing attention from an object), getElementById (looking for one element by their id), () (is the function for getting the id), "" (looking for the string of text serviceModalClose), ; (ends the line of code)
 const serviceModalTitle = document.getElementById("serviceModalTitle");
+// const? (the box thats constant), serviceModalTitle? (the name of the box), = (assigning operator), document (getting the entire page/webpage), . (drawing attention from an object), getElementById (looking for one element by their id), () (is the function for getting the id), "" (looking for the string of text serviceModalTitle), ; (ends the line of code)
 const serviceModalPrice = document.getElementById("serviceModalPrice");
+// const? (the box thats constant), serviceModalPrice? (the name of the box), = (assigning operator), document (getting the entire page/webpage), . (drawing attention from an object), getElementById (looking for one element by their id), () (is the function for getting the id), "" (looking for the string of text serviceModalPrice), ; (ends the line of code)
 const serviceModalList = document.getElementById("serviceModalList");
+// const? (the box thats constant), serviceModalList? (the name of the box), = (assigning operator), document (getting the entire page/webpage), . (drawing attention from an object), getElementById (looking for one element by their id), () (is the function for getting the id), "" (looking for the string of text serviceModalList), ; (ends the line of code)
  
 // ----- Main Shop Object -----
 const shopInfo = {
@@ -164,6 +186,10 @@ const setCurrentYear = () => {
     if (!yearEl) return;
     yearEl.textContent = new Date().getFullYear();
 };
+// set = place or assign something
+// current year = the year right now
+// why are () empty and what is the purpose = we are not calling anything, made up
+// if statements = decision making
  
 const formatHour = (hour) => {
     if (hour === 0) return "Closed";
